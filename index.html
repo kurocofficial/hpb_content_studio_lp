@@ -1394,9 +1394,9 @@
         <div class="sr sr-d1 stat-item">
           <span class="stat-emoji">🤖</span>
           <div>
-            <span class="stat-number" data-target="total_tokens">--</span><span class="stat-unit">万</span>
+            <span class="stat-number" data-target="total_chars">--</span><span class="stat-unit">文字</span>
           </div>
-          <span class="stat-label">累計AI処理トークン</span>
+          <span class="stat-label">生成文字数累計</span>
         </div>
         <div class="sr sr-d2 stat-item">
           <span class="stat-emoji">💈</span>
@@ -2016,7 +2016,7 @@
     // ─── Stats Bar ───
     (function() {
       function formatStatNumber(key, value) {
-        if (key === 'total_tokens') return Math.round(value / 10000);
+        // total_chars はそのまま表示
         return value;
       }
 
@@ -2049,7 +2049,7 @@
 
           var targets = {
             weekly_signups: formatStatNumber('weekly_signups', data.weekly_signups),
-            total_tokens: formatStatNumber('total_tokens', data.total_tokens),
+            total_chars: formatStatNumber("total_chars", data.total_chars),
             registered_salons: formatStatNumber('registered_salons', data.registered_salons)
           };
 
