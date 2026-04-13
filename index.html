@@ -2027,7 +2027,7 @@
     // ─── Stats Bar ───
     (function() {
       function formatStatNumber(key, value) {
-        if (key === 'total_tokens') return Math.round(value / 10000);
+        if (key === 'total_tokens') return Math.round(value / 1000) / 10;
         return value;
       }
 
@@ -2041,12 +2041,17 @@
       }
 
       function animateCountUp(el, target, duration) {
+        var isDecimal = !Number.isInteger(target);
         var start = performance.now();
         function tick(now) {
           var elapsed = now - start;
           var progress = Math.min(elapsed / duration, 1);
-          var current = Math.round(easeOutExpo(progress) * target);
-          el.textContent = current.toLocaleString();
+          var current = easeOutExpo(progress) * target;
+          if (isDecimal) {
+            el.textContent = (Math.round(current * 10) / 10).toFixed(1);
+          } else {
+            el.textContent = Math.round(current).toLocaleString();
+          }
           if (progress < 1) requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
