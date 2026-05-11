@@ -1470,9 +1470,9 @@
         <div class="sr stat-item">
           <span class="stat-emoji">📈</span>
           <div>
-            <span class="stat-number" data-target="weekly_signups">--</span><span class="stat-unit">件</span>
+            <span class="stat-number" data-target="total_signups">--</span><span class="stat-unit">件</span>
           </div>
-          <span class="stat-label">今週の新規登録</span>
+          <span class="stat-label">累計加入者数</span>
         </div>
         <div class="sr sr-d1 stat-item">
           <span class="stat-emoji">🤖</span>
@@ -2139,7 +2139,7 @@
           if (!statsSection) return;
 
           var targets = {
-            weekly_signups: formatStatNumber('weekly_signups', data.weekly_signups),
+            total_signups: formatStatNumber('total_signups', data.total_signups),
             total_tokens: formatStatNumber('total_tokens', data.total_tokens),
             registered_salons: formatStatNumber('registered_salons', data.registered_salons)
           };
